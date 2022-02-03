@@ -1,7 +1,7 @@
 
 # 盤上の場所を表すクラス
 class Location:
-    def __init__(self, row:int, column:int) -> None:
+    def __init__(self, row:int=-1, column:int=-1) -> None:
         self.row = row
         self.column = column
 

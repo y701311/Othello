@@ -25,6 +25,7 @@ class PrimitiveMonteCarloMethod(Solver):
             # 1手先の盤面
             oneMoveAheadBoard = deepcopy(board)
             oneMoveAheadBoard.put(loc)
+            oneMoveAheadBoard.updateBoardStetus()
             for _ in range(self.samplingNum):
                 # 1手先の盤面からランダムに進める
                 copiedBoard = deepcopy(oneMoveAheadBoard)

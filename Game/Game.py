@@ -6,6 +6,7 @@ from Board.Disc import Disc
 import Solver.Human
 import Solver.Random
 import Solver.PrimitiveMonteCarloMethod
+import Solver.StaticEval_Alphabeta
 
 class Game:
 
@@ -52,6 +53,8 @@ class Game:
             solver = Solver.Random.Random()
         elif name == "PMCM":
             solver = Solver.PrimitiveMonteCarloMethod.PrimitiveMonteCarloMethod(samplingNum=100)
+        elif name == "StaticEval_Alphabeta":
+            solver = Solver.StaticEval_Alphabeta.StaticEval_Alphabeta(depth=5)
         else:
             # デフォルトでは人間が打つ
             solver = Solver.Human.Human()

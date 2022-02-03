@@ -18,7 +18,6 @@ class BitBoard(Board):
         return bits << shift
 
     # 指定された場所に置く
-    # 指定された場所が(-1, -1)ならパスと見なす
     def put(self, location:Location) -> None:
         if self.canPut(location):
             put = self.locationToBits(location)
@@ -312,3 +311,21 @@ class BitBoard(Board):
         board = (board & mask8bit) + ((board >> 8) & mask8bit)
         board = (board & mask16bit) + ((board >> 16) & mask16bit)
         return (board & mask32bit) + ((board >> 32) & mask32bit)
+
+    # 指定された場所の石の色を返す
+    def getLocationDisc(self, location:Location) -> Disc:
+        mask = self.locationToBits(location)
+        if self.player == Disc.black:
+            if (self.playerBoard & mask) != 0:
+                return Disc.black
+            elif (self.opponentBoard & mask) != 0:
+                return Disc.white
+            else:
+                return Disc.empty
+        elif self.player == Disc.white:
+            if (self.playerBoard & mask) != 0:
+                return Disc.white
+            elif (self.opponentBoard & mask) != 0:
+                return Disc.black
+            else:
+                return Disc.empty

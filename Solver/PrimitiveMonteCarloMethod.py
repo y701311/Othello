@@ -17,7 +17,7 @@ class PrimitiveMonteCarloMethod(Solver):
         placeableLocation = board.getPlaceableLocation()
         if len(placeableLocation) == 0:
             # 置ける場所が無いならパス
-            return Location(-1, -1)
+            return "pass"
         
         winRate = []
         for loc in placeableLocation:
@@ -25,10 +25,11 @@ class PrimitiveMonteCarloMethod(Solver):
             # 1手先の盤面
             oneMoveAheadBoard = deepcopy(board)
             oneMoveAheadBoard.put(loc)
+            oneMoveAheadBoard.updateBoardStetus()
             for _ in range(self.samplingNum):
                 # 1手先の盤面からランダムに進める
                 copiedBoard = deepcopy(oneMoveAheadBoard)
-                if self._randomSearch(copiedBoard) == board.player:
+                if self.randomSearch(copiedBoard) == board.player:
                     winNum += 1
             winRate.append(winNum / self.samplingNum)
         maxWinRate = max(winRate)
@@ -40,7 +41,7 @@ class PrimitiveMonteCarloMethod(Solver):
         return placeableLocation[maxWinRateIndex]
 
     # 選択可能な場所へ再帰的にランダムに石を置き続け、ゲームが終了すると勝った石の色を返す
-    def _randomSearch(self, board:Board) -> Disc:
+    def randomSearch(self, board:Board) -> Disc:
         if board.gameIsFinished():
             return board.getWinner()
 
@@ -48,11 +49,11 @@ class PrimitiveMonteCarloMethod(Solver):
         if len(placeableLocation) == 0:
             board.passPut()
             board.updateBoardStetus()
-            winner = self._randomSearch(board)
+            winner = self.randomSearch(board)
         else:
             index = random.randint(0, len(placeableLocation)-1)
             board.put(placeableLocation[index])
             board.updateBoardStetus()
-            winner = self._randomSearch(board)
+            winner = self.randomSearch(board)
 
         return winner

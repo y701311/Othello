@@ -14,8 +14,7 @@ class Human(Solver):
         while (not location.checkRenge()) or (not board.canPut(location)):
             inputStr = input()
             if inputStr == "pass":
-                location = Location(-1, -1)
-                break
+                return "pass"
             else:
                 locationInput = int(inputStr)
                 location.row = (locationInput // 10) % 10

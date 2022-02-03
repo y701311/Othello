@@ -9,7 +9,6 @@ class Board:
         self.player = Disc.black
 
     # 指定された場所に置く
-    # 指定された場所が(-1, -1)ならパスと見なす
     def put(self, location:Location) -> None:
         pass
 
@@ -39,6 +38,10 @@ class Board:
 
     # 黒石と白石の数を返す
     def getDiscNum(self) -> tuple:
+        pass
+
+    # 指定された場所の石の色を返す
+    def getLocationDisc(self, location:Location) -> Disc:
         pass
 
     # ゲームの終了判定

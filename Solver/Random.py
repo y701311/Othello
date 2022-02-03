@@ -11,7 +11,7 @@ class Random(Solver):
     def selectLocation(self, board:Board) -> Location:
         placeableLocation = board.getPlaceableLocation()
         if len(placeableLocation) == 0:
-            return Location(-1, -1)
+            return "pass"
         else:
             index = random.randint(0, len(placeableLocation)-1)
             return placeableLocation[index]

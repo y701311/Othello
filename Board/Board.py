@@ -41,6 +41,10 @@ class Board:
     def getDiscNum(self) -> tuple:
         pass
 
+    # 指定された場所の石の色を返す
+    def getLocationDisc(self, location:Location) -> Disc:
+        pass
+
     # ゲームの終了判定
     def gameIsFinished(self) -> bool:
         pass

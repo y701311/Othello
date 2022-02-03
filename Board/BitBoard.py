@@ -18,7 +18,6 @@ class BitBoard(Board):
         return bits << shift
 
     # 指定された場所に置く
-    # 指定された場所が(-1, -1)ならパスと見なす
     def put(self, location:Location) -> None:
         if self.canPut(location):
             put = self.locationToBits(location)

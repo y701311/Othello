@@ -17,7 +17,7 @@ class PrimitiveMonteCarloMethod(Solver):
         placeableLocation = board.getPlaceableLocation()
         if len(placeableLocation) == 0:
             # 置ける場所が無いならパス
-            return Location(-1, -1)
+            return "pass"
         
         winRate = []
         for loc in placeableLocation:

@@ -11,7 +11,7 @@ class Human(Solver):
         print("e.g. 53 is row=5, column=3")
 
         location = Location(-1, -1)
-        while (not location.checkRenge()) or (not board.canPut(location)):
+        while (not location.checkRange()) or (not board.canPut(location)):
             inputStr = input()
             if inputStr == "pass":
                 return "pass"
@@ -19,7 +19,7 @@ class Human(Solver):
                 locationInput = int(inputStr)
                 location.row = (locationInput // 10) % 10
                 location.column = locationInput % 10
-                if (not location.checkRenge()) or (not board.canPut(location)):
+                if (not location.checkRange()) or (not board.canPut(location)):
                     print("Invalid input.")
 
         return location

@@ -29,7 +29,7 @@ class BitBoard(Board):
 
     # 指定された場所に置けるかどうか
     def canPut(self, location:Location) -> bool:
-        if location.checkRenge():
+        if location.checkRange():
             putBoard = self.locationToBits(location)
             legalBoard = self.makeLegalBoard()
             # 指定された場所が合法手に含まれているか

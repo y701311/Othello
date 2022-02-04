@@ -6,7 +6,7 @@ class Location:
         self.column = column
 
     # 範囲の検証
-    def checkRenge(self) -> bool:
+    def checkRange(self) -> bool:
         if (1 <= self.row <= 8) and (1 <= self.column <= 8):
             return True
         else:

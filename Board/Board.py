@@ -29,7 +29,7 @@ class Board:
         pass
 
     # ボードのパラメータを更新
-    def updateBoardStetus(self):
+    def updateBoardStatus(self):
         pass
 
     # 石の数がより多い色を返す

@@ -45,7 +45,7 @@ class Alphabeta(Solver):
         placeableLocation = board.getPlaceableLocation()
         if len(placeableLocation) == 0:
             board.passPut()
-            board.updateBoardStetus()
+            board.updateBoardStatus()
             if board.player == self.player:
                 alpha = max(alpha, self.alphabeta(board, depth-1, alpha, beta))
                 return alpha
@@ -57,7 +57,7 @@ class Alphabeta(Solver):
             for loc in placeableLocation:
                 oneMoveAheadBoard = deepcopy(board)
                 oneMoveAheadBoard.put(loc)
-                oneMoveAheadBoard.updateBoardStetus()
+                oneMoveAheadBoard.updateBoardStatus()
                 alpha = max(alpha, self.alphabeta(oneMoveAheadBoard, depth-1, alpha, beta))
                 if alpha >= beta:
                     break # betaカット
@@ -66,7 +66,7 @@ class Alphabeta(Solver):
             for loc in placeableLocation:
                 oneMoveAheadBoard = deepcopy(board)
                 oneMoveAheadBoard.put(loc)
-                oneMoveAheadBoard.updateBoardStetus()
+                oneMoveAheadBoard.updateBoardStatus()
                 beta = min(beta, self.alphabeta(oneMoveAheadBoard, depth-1, alpha, beta))
                 if alpha >= beta:
                     break # alphaカット

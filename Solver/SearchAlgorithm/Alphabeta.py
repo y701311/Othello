@@ -27,6 +27,7 @@ class Alphabeta(Solver):
             # 1手先の盤面
             oneMoveAheadBoard = deepcopy(board)
             oneMoveAheadBoard.put(loc)
+            oneMoveAheadBoard.updateBoardStatus()
             evaluationValue.append(self.alphabeta(oneMoveAheadBoard, self.depth, -inf, inf))
         maxEvaluationValue = max(evaluationValue)
         for i, value in enumerate(evaluationValue):

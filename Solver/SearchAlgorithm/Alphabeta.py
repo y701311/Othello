@@ -24,7 +24,6 @@ class Alphabeta(Solver):
         
         evaluationValue = []
         for loc in placeableLocation:
-            winNum = 0
             # 1手先の盤面
             oneMoveAheadBoard = deepcopy(board)
             oneMoveAheadBoard.put(loc)

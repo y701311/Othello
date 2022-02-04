@@ -25,7 +25,7 @@ class PrimitiveMonteCarloMethod(Solver):
             # 1手先の盤面
             oneMoveAheadBoard = deepcopy(board)
             oneMoveAheadBoard.put(loc)
-            oneMoveAheadBoard.updateBoardStetus()
+            oneMoveAheadBoard.updateBoardStatus()
             for _ in range(self.samplingNum):
                 # 1手先の盤面からランダムに進める
                 copiedBoard = deepcopy(oneMoveAheadBoard)
@@ -48,12 +48,12 @@ class PrimitiveMonteCarloMethod(Solver):
         placeableLocation = board.getPlaceableLocation()
         if len(placeableLocation) == 0:
             board.passPut()
-            board.updateBoardStetus()
+            board.updateBoardStatus()
             winner = self.randomSearch(board)
         else:
             index = random.randint(0, len(placeableLocation)-1)
             board.put(placeableLocation[index])
-            board.updateBoardStetus()
+            board.updateBoardStatus()
             winner = self.randomSearch(board)
 
         return winner

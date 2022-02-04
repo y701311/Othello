@@ -28,7 +28,7 @@ class Game:
 
             if self.board.gameIsFinished():
                 break
-            self.board.updateBoardStetus()
+            self.board.updateBoardStatus()
             self.display()
 
             # 2人目の手番
@@ -40,7 +40,7 @@ class Game:
                 
             if self.board.gameIsFinished():
                 break
-            self.board.updateBoardStetus()
+            self.board.updateBoardStatus()
             self.display()
 
         self.displayResult()

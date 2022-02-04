@@ -254,7 +254,7 @@ class BitBoard(Board):
         return (playerLegalBoard == 0) and (opponentLegalBoard == 0)
 
     # ボードのパラメータを更新
-    def updateBoardStetus(self):
+    def updateBoardStatus(self):
         self.swapBoard()
         self.changePlayerColor()
         self.turn += 1

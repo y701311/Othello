@@ -24,10 +24,10 @@ class Alphabeta(Solver):
         
         evaluationValue = []
         for loc in placeableLocation:
-            winNum = 0
             # 1手先の盤面
             oneMoveAheadBoard = deepcopy(board)
             oneMoveAheadBoard.put(loc)
+            oneMoveAheadBoard.updateBoardStatus()
             evaluationValue.append(self.alphabeta(oneMoveAheadBoard, self.depth, -inf, inf))
         maxEvaluationValue = max(evaluationValue)
         for i, value in enumerate(evaluationValue):

@@ -1,4 +1,4 @@
-import random
+import numpy as np
 from copy import deepcopy
 
 from Board.Board import Board
@@ -32,10 +32,7 @@ class PrimitiveMonteCarloMethod(Solver):
                 if self.randomSearch(copiedBoard) == board.player:
                     winNum += 1
             winRate.append(winNum / self.samplingNum)
-        maxWinRate = max(winRate)
-        for i, rate in enumerate(winRate):
-            if rate == maxWinRate:
-                maxWinRateIndex = i
+        maxWinRateIndex = np.argmax(winRate)
         
         # 勝った割合の最も大きい手を選択
         return placeableLocation[maxWinRateIndex]
@@ -51,7 +48,7 @@ class PrimitiveMonteCarloMethod(Solver):
             board.updateBoardStatus()
             winner = self.randomSearch(board)
         else:
-            index = random.randint(0, len(placeableLocation)-1)
+            index = np.random.randint(len(placeableLocation))
             board.put(placeableLocation[index])
             board.updateBoardStatus()
             winner = self.randomSearch(board)

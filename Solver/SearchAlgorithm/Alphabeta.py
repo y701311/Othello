@@ -1,4 +1,4 @@
-from math import inf
+import numpy as np
 from copy import deepcopy
 
 from Board.Board import Board
@@ -28,11 +28,8 @@ class Alphabeta(Solver):
             oneMoveAheadBoard = deepcopy(board)
             oneMoveAheadBoard.put(loc)
             oneMoveAheadBoard.updateBoardStatus()
-            evaluationValue.append(self.alphabeta(oneMoveAheadBoard, self.depth, -inf, inf))
-        maxEvaluationValue = max(evaluationValue)
-        for i, value in enumerate(evaluationValue):
-            if value == maxEvaluationValue:
-                maxEvaluationValueIndex = i
+            evaluationValue.append(self.alphabeta(oneMoveAheadBoard, self.depth, -np.inf, np.inf))
+        maxEvaluationValueIndex = np.argmax(evaluationValue)
         
         # 評価値の最も大きい手を選択
         return placeableLocation[maxEvaluationValueIndex]

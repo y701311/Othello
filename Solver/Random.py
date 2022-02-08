@@ -1,4 +1,4 @@
-import random
+import numpy as np
 
 from Solver.Solver import Solver
 from Location.Location import Location
@@ -13,5 +13,5 @@ class Random(Solver):
         if len(placeableLocation) == 0:
             return "pass"
         else:
-            index = random.randint(0, len(placeableLocation)-1)
+            index = np.random.randint(len(placeableLocation))
             return placeableLocation[index]

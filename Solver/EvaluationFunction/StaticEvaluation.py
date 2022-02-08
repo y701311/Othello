@@ -1,5 +1,6 @@
 from Solver.EvaluationFunction.EvaluationFunction import EvaluationFunction
 from Board.Board import Board
+from Board.Disc import Disc
 from Location.Location import Location
 
 # 静的評価関数
@@ -27,7 +28,12 @@ class StaticEvaluationFunction(EvaluationFunction):
             for j in range(1, 9):
                 loc.row = i
                 loc.column = j
-                if board.getLocationDisc(loc) == board.player:
+                disc = board.getLocationDisc(loc)
+                if disc == Disc.empty:
+                    pass
+                elif disc == board.player:
                     evaluationValue += self.evalValueBoard[i-1][j-1]
+                else:
+                    evaluationValue -= self.evalValueBoard[i-1][j-1]
         
         return evaluationValue

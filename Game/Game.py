@@ -7,6 +7,7 @@ import Solver.Human
 import Solver.Random
 import Solver.PrimitiveMonteCarloMethod
 import Solver.StaticEval_Alphabeta
+import Solver.MCTS
 
 class Game:
 
@@ -55,6 +56,8 @@ class Game:
             solver = Solver.PrimitiveMonteCarloMethod.PrimitiveMonteCarloMethod(samplingNum=100)
         elif name == "StaticEval_Alphabeta":
             solver = Solver.StaticEval_Alphabeta.StaticEval_Alphabeta(depth=5)
+        elif name == "MCTS":
+            solver = Solver.MCTS.MCTS(samplingNum=100, expandBase=5, selectChildNodeAlgorithm="UTC")
         else:
             # デフォルトでは人間が打つ
             solver = Solver.Human.Human()
